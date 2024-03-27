@@ -14,6 +14,7 @@ export class NetworkComponent implements OnInit{
   users? :User[];
   currentUser:User;
   friendRequest: FriendRequest;
+  userRequestStates: { [userId: string]: 'Send Request' | 'Request Pending' } = {};
 
   constructor(private userService:UserService, private authService:AuthService, private friendService:FriendService){
     this.authService.currentUser().subscribe(user => {
@@ -38,11 +39,19 @@ export class NetworkComponent implements OnInit{
 
   sendRequest(friend:User){
     console.log("Friend User detail",friend);
+    if (this.userRequestStates[friend._id] === 'Request Pending') {
+      // Request already sent, prevent duplicate actions
+      return;
+    };
     this.friendRequest={
       userId:this.currentUser._id,
       friendId:friend._id,
       status:'Request Pending'
     };
+
+    this.userRequestStates[friend._id] = 'Request Pending'; // Update state immediately for UI feedback
+
+
     this.friendService.createRequest(this.friendRequest)
     .subscribe({
       next:(response)=>{

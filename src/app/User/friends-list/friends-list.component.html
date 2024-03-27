@@ -4,19 +4,22 @@
             <app-user-profile></app-user-profile>
         </div>
         <div class="col-md-8">
-            <div class="border shadow d-flex align-items-center p-2 mb-4" style="width: 80%;">
-                <img class="card-img-top p-1 rounded-circle"
-                    src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    alt="Card image cap" style="border-radius: 50%; width: 100px; height: 100px;">
-                <h4 class="mb-0" style="margin-left: 5%;">Shubhanshi Agrawal</h4>
-            </div>
-            <div class="border shadow d-flex align-items-center p-2 mb-4" style="width: 80%;">
-                <img class="card-img-top p-1 rounded-circle"
-                    src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    alt="Card image cap" style="border-radius: 50%; width: 100px; height: 100px;">
-                <h4 class="mb-0" style="margin-left: 5%;">Shubhanshi Agrawal</h4>
-            </div>
-  
+            <ng-container *ngIf="friendList;else noList">
+                <div *ngFor="let friend of friendList">
+                    <div class="border shadow d-flex align-items-center p-2 mb-4">
+                        <img class="card-img-top p-1 rounded-circle"
+                            src="https://cdn.iconscout.com/icon/free/png-512/free-user-avatar-contact-portfolio-personal-portrait-profile-2-5270.png?f=webp&w=512"
+                            alt="Card image cap" style="border-radius: 50%; width: 100px; height: 100px;">
+                        <h4 class="mb-0" style="margin-left: 5%;">{{friend}}</h4>
+                        
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #noList>
+                <h2>No Friend </h2>
+            </ng-template>
+
+
         </div>
     </div>
-  </div>
+</div>

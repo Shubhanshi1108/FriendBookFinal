@@ -11,7 +11,9 @@
                             src="https://cdn.iconscout.com/icon/free/png-512/free-user-avatar-contact-portfolio-personal-portrait-profile-2-5270.png?f=webp&w=512"
                             alt="Card image cap" style="border-radius: 50%; width: 100px; height: 100px;">
                         <h4 class="mb-0" style="margin-left: 5%;">{{user.firstName}} {{user.lastName}}</h4>
-                        <button class=" btn btn-primary" style="margin-left: auto;" (click)="sendRequest(user)">Send Request</button>
+                        <button class=" btn btn-primary" style="margin-left: auto;" 
+                        [ngClass]="{'disabled': userRequestStates[user._id] === 'Request Pending'}"
+                        (click)="sendRequest(user)">{{ userRequestStates[user._id] || 'Send Request' }}</button>
                     </div>
                 </div>
             </ng-container>
