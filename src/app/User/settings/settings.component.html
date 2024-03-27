@@ -1,1 +1,75 @@
-<p>settings works!</p>
+<div class="container border " style="width:80%;">
+    <div class="row nav nav-tabs text-center">
+        <div class="col">
+            <a class="nav-link active" data-bs-toggle="tab" href="#home"><strong>Profile Settings</strong></a>
+        </div>
+        <div class="col">
+            <a class="nav-link" data-bs-toggle="tab" href="#resetPassword"><strong>Reset Password</strong></a>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="home">
+            <form class="p-3 mt-3">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="firstName" class="form-label ">First Name</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" id="firstName" class="form-control " aria-describedby="passwordHelpBlock">
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <label for="lastName" class="form-label ">Last Name</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" id="lastName" class="form-control " aria-describedby="passwordHelpBlock">
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <label for="newPassword" class="form-label ">Email</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="email" id="newPassword" class="form-control " aria-describedby="passwordHelpBlock">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <label for="newPassword" class="form-label ">Mobile No.</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" id="newPassword" class="form-control " aria-describedby="passwordHelpBlock">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <label for="newPassword" class="form-label ">DOB</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="date" id="newPassword" class="form-control " aria-describedby="passwordHelpBlock">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <label for="newPassword" class="form-label ">Gender</label>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" id="newPassword" class="form-control " aria-describedby="passwordHelpBlock">
+                    </div>
+                </div>
+
+
+                <button class="btn btn-primary mt-4 col-4">Save</button>
+            </form>
+        </div>
+        <div class="tab-pane" id="resetPassword">
+            <app-reset-password></app-reset-password>
+        </div>
+
+    </div>
+
+</div>

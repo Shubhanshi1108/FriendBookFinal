@@ -1,1 +1,66 @@
-<p>register works!</p>
+<div class="container" style="width: 80%;">
+    <div class="shadow border mt-5 p-3 ">
+        <div class="row text-center">
+            <div class="col">
+                <h2>Registeration Page</h2>
+            </div>
+        </div>
+        <hr>
+        <form class="p-3" #registerationForm="ngForm" (ngSubmit)="onFormSubmit()">
+            <div class="row form-group mb-3">
+                <div class="col">
+                    <label class="form-label">First Name</label>
+                    <input type="text" id="firstName" class="form-control" [(ngModel)]="model.firstName"  name="firstName" >
+                </div>
+
+            </div>
+            <div class="row form-group mb-3">
+                <div class="col">
+                    <labeL class="form-label">Last Name</labeL>
+                    <input type="text" class="form-control" id="lastName" [(ngModel)]="model.lastName" name="lastName" >
+                </div>
+
+            </div>
+
+            <div class="row form-group mb-3">
+                <div class="col">
+                    <labeL class="form-label">Email</labeL>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="model.email" name="email" >
+                </div>
+            </div>
+
+            <div class="row form-group mb-3">
+                <div class="col">
+                    <labeL class="form-label">Date of Birth(DOB)</labeL>
+                    <input type="date" class="form-control" id="dob" [(ngModel)]="model.dob" name="dob" >
+                </div>
+            </div>
+
+            
+            <div class="row form-group mb-3">
+                <div class="col">
+                    <labeL class="form-label">Gender</labeL>
+                    <select class="form-control" id="gender" [(ngModel)]="model.gender" name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        
+                      </select>
+                </div>
+            </div>
+
+            <div class="row form-group mb-3">
+                <div class="col">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <button class="btn btn-primary p-2 col-md-4" type="submit">Register</button>
+                <button class="btn btn-outline-secondary col-md-2" style="margin-left: 2%;" type="reset">Clear</button>
+            </div>
+        </form>
+
+    </div>
+</div>
