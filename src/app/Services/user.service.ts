@@ -12,19 +12,19 @@ export class UserService {
   constructor(private http: HttpClient, private cookieService: CookieService) { }
   apiBaseURL = "http://3.17.216.66:3000/";
 
-  allUser():Observable<User[]>{
+  allUser(): Observable<User[]> {
     return this.http.get<User[]>(this.apiBaseURL + 'users/?addAuth=true');
   }
 
-  getUserById(userId:string):Observable<User>{
-    return this.http.get<User>(this.apiBaseURL+'users/'+userId);
+  getUserById(userId: string): Observable<User> {
+    return this.http.get<User>(this.apiBaseURL + 'users/' + userId+'/?addAuth=true');
   }
 
-  getUserByEmail(email:string):Observable<User>{
-    return this.http.post<User>(this.apiBaseURL+'users/finduserbyemail?addAuth=true',{email:email});
+  getUserByEmail(email: string): Observable<User> {
+    return this.http.post<User>(this.apiBaseURL + 'users/finduserbyemail?addAuth=true', { email: email });
   }
 
-  updateUser(updatedUser:User):Observable<User>{
-    return this.http.put<User>(this.apiBaseURL+'users/?addAuth=true'+updatedUser._id,updatedUser);
+  updateUser(updatedUser: User): Observable<User> {
+    return this.http.put<User>(this.apiBaseURL + 'users/?addAuth=true' + updatedUser._id, updatedUser);
   }
 }

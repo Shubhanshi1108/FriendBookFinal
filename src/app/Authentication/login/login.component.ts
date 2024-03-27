@@ -44,14 +44,14 @@ export class LoginComponent {
         //set user
         this.authService.setUser({
           email: response.email,
-          role: this.role
+          role: this.role,
+          id: response._id
           // isAdmin: response.isAdmin,
           // firstName: response.firstName,
           // lastName: response.lastName,
           // dob: response.dob,
           // gender: response.gender,
           // isActive: response.isActive,
-          // _id: response._id,
           // createdDate: response.createdDate,
           // __v: response.__v,
           // token: response.token,
