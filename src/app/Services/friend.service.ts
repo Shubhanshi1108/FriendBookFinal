@@ -15,6 +15,6 @@ export class FriendService {
   apiBaseURL = "http://3.17.216.66:3000/";
 
   createRequest(request:FriendRequest):Observable<message>{
-    return this.http.post<message>(this.apiBaseURL + 'friends/createrequest',request);
+    return this.http.post<message>(this.apiBaseURL + 'friends/createrequest/?addAuth=true',request);
   }
 }
