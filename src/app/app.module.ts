@@ -15,7 +15,8 @@ import { ResetPasswordComponent } from './Authentication/reset-password/reset-pa
 import { FriendsListComponent } from './User/friends-list/friends-list.component';
 import { HomeComponent } from './User/home/home.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './Interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,11 @@ import {HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

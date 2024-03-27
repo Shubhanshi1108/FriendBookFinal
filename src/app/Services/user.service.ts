@@ -13,7 +13,7 @@ export class UserService {
   apiBaseURL = "http://3.17.216.66:3000/";
 
   allUser():Observable<User[]>{
-    return this.http.get<User[]>(this.apiBaseURL + 'users/');
+    return this.http.get<User[]>(this.apiBaseURL + 'users/?addAuth=true');
   }
 
   getUserById(userId:string):Observable<User>{
