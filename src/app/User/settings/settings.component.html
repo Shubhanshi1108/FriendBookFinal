@@ -43,7 +43,10 @@
                         <label for="dob" class="form-label ">DOB</label>
                     </div>
                     <div class="col-5">
-                        <input type="date" id="dob" class="form-control " name="dob" [(ngModel)]="loggedUser.dob">
+                        <input type="date" id="dob" class="form-control " name="dob" 
+                        value="{{loggedUser.dob}}"
+                        [ngModel]="loggedUser.dob | date: 'yyyy-MM-dd'"
+                        (ngModelChange)="loggedUser.dob= $event">
                     </div>
                 </div>
                 <div class="row mt-2">

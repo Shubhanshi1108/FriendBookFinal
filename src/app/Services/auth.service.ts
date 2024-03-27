@@ -7,8 +7,8 @@ import { User } from '../Authentication/model/user.model';
 import { registerUser } from '../Authentication/model/register-user.model';
 import { CookieService } from 'ngx-cookie-service';
 
-interface message{
-  message:string
+interface message {
+  message: string
 }
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,7 @@ interface message{
 export class AuthService {
 
   $user = new BehaviorSubject<LoggedUser | undefined>(undefined);
+  $currentUser = new BehaviorSubject<User | undefined>(undefined);
 
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
@@ -29,14 +30,29 @@ export class AuthService {
   }
 
   authenticate(request: AuthenticateRequest): Observable<User> {
-    return this.http.post<User>(this.apiBaseURL + 'users/authenticate', { email: request.email, password: request.password });
+    return this.http.post<User>(this.apiBaseURL + 'users/authenticate', { email: request.email, password: request.password })
+      .pipe(
+        map(response => {
+          console.log(response);
+          this.setCurrentUser(response);
+          return response;
+        })
+      );
   }
 
+  setCurrentUser(user: User): void {
+    console.log("setting user in auth Service",user);
+    this.$currentUser.next(user);
+  }
   setUser(user: LoggedUser): void {
     this.$user.next(user);
     localStorage.setItem('user-email', user.email);
     localStorage.setItem('user-role', user.role);
-    localStorage.setItem('user-id',user.id)
+    localStorage.setItem('user-id', user.id)
+  }
+
+  currentUser(): Observable<User | undefined> {
+    return this.$currentUser.asObservable();
   }
 
   user(): Observable<LoggedUser | undefined> {
@@ -46,12 +62,12 @@ export class AuthService {
   getUser(): LoggedUser | undefined {
     const email = localStorage.getItem('user-email');
     const role = localStorage.getItem('user-role');
-    const id= localStorage.getItem('user-id');
+    const id = localStorage.getItem('user-id');
     if (email) {
       const user: LoggedUser = {
         email: email,
         role: role,
-        id:id
+        id: id
       }
       return user;
     }
@@ -63,6 +79,7 @@ export class AuthService {
     localStorage.clear();
     this.cookieService.delete('Authorization', '/');
     this.$user.next(undefined);
+    this.$currentUser.next(undefined);
 
   }
 }

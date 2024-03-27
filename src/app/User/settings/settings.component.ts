@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/Authentication/model/user.model';
 import { AuthService } from 'src/app/Services/auth.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class SettingsComponent implements OnInit {
   id: string;
   loggedUser: User;
-  constructor(private userService: UserService, private authService: AuthService) {
+  constructor(private userService: UserService, private authService: AuthService, private router:Router) {
 
   }
   ngOnInit(): void {
@@ -30,6 +31,12 @@ export class SettingsComponent implements OnInit {
   }
 
   updateProfileSetting():void{
-    console.log(this.loggedUser);
+    const updatedUser:User=this.loggedUser;
+    this.userService.updateUser(updatedUser).subscribe({
+      next:(response)=>{
+        console.log("User Updated Successfully");
+        this.router.navigateByUrl('home');
+      }
+    });
   }
 }

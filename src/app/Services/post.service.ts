@@ -16,18 +16,18 @@ export class PostService {
   apiBaseURL = "http://3.17.216.66:3000/";
 
   addPost(model:PostRequest):Observable<message>{
-    return this.http.post<message>(this.apiBaseURL+'posts/createpost',model);
+    return this.http.post<message>(this.apiBaseURL+'posts/createpost/?addAuth=true',model);
   }
 
   getPostByUserId(userID:string):Observable<Post>{
-    return this.http.get<Post>(this.apiBaseURL + 'posts/' + userID);
+    return this.http.get<Post>(this.apiBaseURL + 'posts/' + userID+'/?addAuth=true');
   }
 
   getAllPost():Observable<Post[]>{
-    return this.http.get<Post[]>(this.apiBaseURL+ 'posts/');
+    return this.http.get<Post[]>(this.apiBaseURL+ 'posts/?addAuth=true');
   }
 
   updatePost(updatedPost:Post){
-    return this.http.put<Post>(this.apiBaseURL+'posts/'+updatedPost.id, updatedPost);
+    return this.http.put<Post>(this.apiBaseURL+'posts/'+updatedPost.id+'/?addAuth=true', updatedPost);
   }
 }

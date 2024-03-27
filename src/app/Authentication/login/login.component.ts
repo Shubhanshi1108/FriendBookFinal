@@ -46,16 +46,7 @@ export class LoginComponent {
           email: response.email,
           role: this.role,
           id: response._id
-          // isAdmin: response.isAdmin,
-          // firstName: response.firstName,
-          // lastName: response.lastName,
-          // dob: response.dob,
-          // gender: response.gender,
-          // isActive: response.isActive,
-          // createdDate: response.createdDate,
-          // __v: response.__v,
-          // token: response.token,
-          // photoId: response.photoId
+          
         });
 
         //redirect back to home

@@ -25,6 +25,6 @@ export class UserService {
   }
 
   updateUser(updatedUser: User): Observable<User> {
-    return this.http.put<User>(this.apiBaseURL + 'users/?addAuth=true' + updatedUser._id, updatedUser);
+    return this.http.put<User>(this.apiBaseURL + 'users/' + updatedUser._id + '/?addAuth=true', updatedUser);
   }
 }
